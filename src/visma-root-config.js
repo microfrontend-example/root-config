@@ -1,20 +1,21 @@
-import { registerApplication, start } from "single-spa";
+import { registerApplication, start } from 'single-spa';
 
 registerApplication({
-  name: "@single-spa/welcome",
-  app: () =>
-    System.import(
-      "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js"
-    ),
-  activeWhen: ["/"],
+  name: '@visma/list',
+  app: () => System.import('@visma/list'),
+  activeWhen: ['/list'],
 });
 
-// registerApplication({
-//   name: "@visma/navbar",
-//   app: () => System.import("@visma/navbar"),
-//   activeWhen: ["/"]
-// });
-
-start({
-  urlRerouteOnly: true,
+registerApplication({
+  name: '@visma/form',
+  app: () => System.import('@visma/form'),
+  activeWhen: ['/form'],
 });
+
+registerApplication({
+  name: '@visma/navbar',
+  app: () => System.import('@visma/navbar'),
+  activeWhen: () => true,
+});
+
+start({ urlRerouteOnly: true });
